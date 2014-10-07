@@ -23,12 +23,20 @@ static PyObject* py_setupWindow(PyObject* self, PyObject* args)
     return Py_BuildValue("d", retVal);
 }
 
+static PyObject* py_updateScreenshot(PyObject* self, PyObject* args)
+{
+    int retVal;
+    retVal = updateScreenshot();
+    return Py_BuildValue("d", retVal);
+}
+
 /////////////////////// METHOD TABLE /////////////////////////////////////// 
 static PyMethodDef pyToC_methods[] = 
 {
     {"testWindow", py_testWindow, METH_VARARGS, "Execute a test function."},
     {"testPerformance", py_testPerformance, METH_VARARGS, "Performance test."},
     {"setupWindow", py_setupWindow, METH_VARARGS, "Setup the window."},
+    {"updateScreenshot", py_updateScreenshot, METH_VARARGS, "Update the screen shot."},
     {NULL, NULL, 0, NULL}
 };
 

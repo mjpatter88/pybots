@@ -32,6 +32,7 @@ def callCFunc():
     # print(s)
     # pyToC.testPerformance()
     pyToC.setupWindow()
+    pyToC.updateScreenshot()
 
 
 if __name__ == '__main__':

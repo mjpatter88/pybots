@@ -25,4 +25,9 @@ http://unix.stackexchange.com/questions/122875/how-to-take-a-screenshot-of-an-to
 http://www.cplusplus.com/forum/beginner/63367/
 http://stackoverflow.com/questions/2703640/process-list-on-linux-via-python
 
-"xwinfo" terminal utility.
+"xwininfo" terminal utility.
+"xwd" terminal utility (xwd > image.img) then use gimp to open the image.
+
+
+Use ppm files at least for now:
+http://rosettacode.org/wiki/Bitmap/Write_a_PPM_file#C
