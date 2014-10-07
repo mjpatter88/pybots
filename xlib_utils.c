@@ -100,10 +100,12 @@ int positionWindow()
     //Possibly move the window to the second desktop and maximize it?
 
 
-    // Bring the window to the front and make it fullscreen
+    // Bring the window to the front and make it take up most of the screen
     XRaiseWindow(display, window);
     XMoveResizeWindow(display, window, 10, 35, 1500, 800);
     XFlush(display);
+    // Sleep a bit to give the animation time to complete
+    sleep(1);
     return 0;
 }
 
@@ -118,14 +120,12 @@ int getScreenshot()
     else
     {
         // Use the "XGetImage" function here.
-        // for now just get the root screenshot
-        Window root = DefaultRootWindow(display);
         XWindowAttributes gwa;
-        XGetWindowAttributes(display, root, &gwa);
+        XGetWindowAttributes(display, window, &gwa);
         int width = gwa.width;
         int height = gwa.height;
 
-        XImage* image = XGetImage(display, root, 0, 0, width, height, AllPlanes, ZPixmap);
+        XImage* image = XGetImage(display, window, 0, 0, width, height, AllPlanes, ZPixmap);
         printf("Width: %d. Height: %d .\n", image->width, image->height);
         fflush(stdout);
 
@@ -134,6 +134,22 @@ int getScreenshot()
 
 }
 
+int getRootScreenshot()
+{
+    // Use the "XGetImage" function here.
+    Window root = DefaultRootWindow(display);
+    XWindowAttributes gwa;
+    XGetWindowAttributes(display, root, &gwa);
+    int width = gwa.width;
+    int height = gwa.height;
+
+    XImage* image = XGetImage(display, root, 0, 0, width, height, AllPlanes, ZPixmap);
+    printf("Width: %d. Height: %d .\n", image->width, image->height);
+    fflush(stdout);
+
+    return 0;
+
+}
 
 ///////////////////////////////////// Test Functions /////////////////////////
 
